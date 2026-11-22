@@ -12,7 +12,7 @@ jobs:
     container: ghcr.io/reinauer/container-amiga-gcc:latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Get the tag / version
         id: version
         if: startsWith(github.ref, 'refs/tags/release_')
@@ -27,7 +27,7 @@ jobs:
           cp "sdmac_${version}.lha" aminet/sdmac.lha
           sed -e "s/@VERSION@/${version}/g" -e "s/@DATE@/${release_date}/g" sdmac.readme > aminet/sdmac.readme
       - name: upload build artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: software
           path: |
